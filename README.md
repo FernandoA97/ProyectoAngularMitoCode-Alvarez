@@ -76,7 +76,7 @@ Tambien agregaras enla configuraciones para los archivos **.ts** lo siguiente:
 
 ```json
 "parserOptions": {
-				"project": ["tsconfig.(app|spec).json"]
+				"project": ["tsconfig.json"]
 			},
 ```
 
