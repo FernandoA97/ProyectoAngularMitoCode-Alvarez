@@ -72,6 +72,14 @@ Configuración para los archivos TS:
 			]
 ```
 
+Tambien agregaras enla configuraciones para los archivos **.ts** lo siguiente:
+
+```json
+"parserOptions": {
+				"project": ["tsconfig.(app|spec).json"]
+			},
+```
+
 Ahi mismo agregaremos unas reglas de exclusión en la sección de **rules**:
 
 ```json
