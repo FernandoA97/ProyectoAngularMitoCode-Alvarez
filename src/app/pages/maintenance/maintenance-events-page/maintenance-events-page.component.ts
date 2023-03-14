@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
+import { RouterModule } from '@angular/router';
+import { SharedFormCompleteModule } from '../../../commons/shared/shared-form-complete.module';
 export interface PeriodicElement {
 	name: string;
 	position: number;
@@ -21,11 +26,13 @@ const ELEMENT_DATA: PeriodicElement[] = [
 ];
 
 @Component({
+	standalone: true,
 	selector: 'app-maintenance-events-page',
 	templateUrl: './maintenance-events-page.component.html',
-	styleUrls: ['./maintenance-events-page.component.scss']
+	styleUrls: ['./maintenance-events-page.component.scss'],
+	imports: [RouterModule, MatTableModule, MatTabsModule, MatMenuModule, MatPaginatorModule, SharedFormCompleteModule]
 })
-export class MaintenanceEventsPageComponent {
+export default class MaintenanceEventsPageComponent {
 	displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'action'];
 	dataSource = new MatTableDataSource(ELEMENT_DATA);
 
