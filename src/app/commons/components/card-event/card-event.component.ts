@@ -8,4 +8,10 @@ import { MatCardModule } from '@angular/material/card';
 	styleUrls: ['./card-event.component.scss'],
 	imports: [MatCardModule]
 })
-export class CardEventComponent {}
+export class CardEventComponent {
+	isSelect = false;
+
+	clickCard(): void {
+		this.isSelect = true;
+	}
+}

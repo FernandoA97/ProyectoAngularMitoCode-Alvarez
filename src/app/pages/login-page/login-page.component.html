@@ -16,13 +16,15 @@
 					</mat-form-field>
 
 					<div class="content__login flex-column">
-						<span routerLink="/recovery">¿Olvidaste tu contraseña?</span>
-						<button mat-raised-button color="primary" routerLink="/maintenance">INGRESAR</button>
+						<span [routerLink]="pathRecovery">¿Olvidaste tu contraseña?</span>
+						<button [disabled]="disabledButton" mat-raised-button color="primary" type="button" (click)="clickLogin()">
+							INGRESAR
+						</button>
 					</div>
 
 					<div class="content__register">
 						<span>Si no tienes una cuenta</span>
-						<a routerLink="/register">regístrate</a>
+						<a [routerLink]="pathRegister">regístrate</a>
 					</div>
 				</form>
 			</mat-card-content>

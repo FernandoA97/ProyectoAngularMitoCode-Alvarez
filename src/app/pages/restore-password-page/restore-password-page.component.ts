@@ -11,6 +11,9 @@ import { SharedFormBasicModule } from '../../commons/shared/shared-form-basic.mo
 	imports: [RouterModule, SharedFormBasicModule]
 })
 export default class RestorePasswordPageComponent {
+	readonly pathLogin = PATHS_AUTH_PAGES.loginPage.withSlash;
+	readonly pathRegister = PATHS_AUTH_PAGES.registerPage.withSlash;
+
 	private _token?: string;
 	private _email?: string;
 

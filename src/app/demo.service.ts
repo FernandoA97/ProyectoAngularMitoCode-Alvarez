@@ -4,9 +4,20 @@ import { Injectable } from '@angular/core';
 	providedIn: 'root'
 })
 export class DemoService {
-	constructor() {}
+	private contador = 0;
+	constructor() {
+		console.log('constructor ---- DemoService');
+	}
 
 	saludo(): void {
 		console.log('HELLO');
+	}
+
+	contar(): void {
+		this.contador++;
+	}
+
+	getContador(): number {
+		return this.contador;
 	}
 }

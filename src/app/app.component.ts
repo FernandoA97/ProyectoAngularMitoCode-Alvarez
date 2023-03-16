@@ -19,10 +19,8 @@ export class AppComponent implements OnInit, AfterViewInit {
 
 	ngOnInit(): void {
 		console.log('ngOnInit AppComponent');
-		console.log(this._demoService.saludo());
-
-		fetch('url').then((response) => {
-			console.log(response);
-		});
+		console.log('***LLAMANDO AL CONTADOR');
+		this._demoService.contar();
+		console.log('***MOSTRANDO EL VALOR DEL CONTADOR= ', this._demoService.getContador());
 	}
 }
