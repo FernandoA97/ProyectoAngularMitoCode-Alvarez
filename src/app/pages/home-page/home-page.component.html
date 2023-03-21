@@ -2,9 +2,7 @@
 	<mat-form-field appearance="outline">
 		<mat-label>Género</mat-label>
 		<mat-select>
-			<mat-option> ROCK </mat-option>
-			<mat-option> BALADA </mat-option>
-			<mat-option> CUMBIA </mat-option>
+			<mat-option *ngFor="let genre of listGenres" [value]="genre.id"> {{ genre.name }} </mat-option>
 		</mat-select>
 	</mat-form-field>
 
@@ -12,8 +10,11 @@
 </div>
 
 <div class="cards">
-	<app-card-event></app-card-event>
-	<app-card-event></app-card-event>
-	<app-card-event></app-card-event>
-	<app-card-event></app-card-event>
+	<app-card-event
+		*ngFor="let concerts of listConcerts"
+		[event]="concerts"
+		(clickCard)="clickCard($event)"
+	></app-card-event>
+
+	<!-- <app-card-event #cardDummy (clickCard)="clickCard($event)"></app-card-event> -->
 </div>
