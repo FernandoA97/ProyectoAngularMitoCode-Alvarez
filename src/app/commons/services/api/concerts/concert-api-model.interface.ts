@@ -21,7 +21,7 @@ export interface IResponseConcert {
 	place: string;
 	dateEvent: string;
 	timeEvent: string;
-	genre: IGenre;
+	genreDtoResponse: IGenre;
 	imageUrl: string;
 	description: string;
 	ticketsQuantity: number;
