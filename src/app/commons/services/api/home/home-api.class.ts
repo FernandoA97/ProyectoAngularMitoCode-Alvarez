@@ -1,4 +1,4 @@
-import { ICardEvent } from '../../../components/models/components.interface';
+import { ICardEvent } from '../../../models/components.interface';
 import { IHomeConcerts, IHomeGenres, IResponseHome } from './home-api.interface';
 
 export class ResponseHome {

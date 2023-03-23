@@ -1,6 +1,8 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, inject, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { CardEventComponent } from '../../commons/components/card-event/card-event.component';
-import { ICardEvent } from '../../commons/components/models/components.interface';
+import { PATH_BUY_PAGES } from '../../commons/config/path-pages';
+import { ICardEvent } from '../../commons/models/components.interface';
 import { IHomeGenres } from '../../commons/services/api/home/home-api.interface';
 import { HomeApiService } from '../../commons/services/api/home/home-api.service';
 import { SharedFormCompleteModule } from '../../commons/shared/shared-form-complete.module';
@@ -15,7 +17,8 @@ import { SharedFormCompleteModule } from '../../commons/shared/shared-form-compl
 export class HomePageComponent implements OnInit, AfterViewInit {
 	@ViewChild('cardDummy') cardDummy?: CardEventComponent;
 
-	constructor(private _homeApiService: HomeApiService) {}
+	private _homeApiService = inject(HomeApiService);
+	private _router = inject(Router);
 
 	listConcerts: ICardEvent[] = [];
 	listGenres: IHomeGenres[] = [];
@@ -33,13 +36,7 @@ export class HomePageComponent implements OnInit, AfterViewInit {
 	};
 
 	ngOnInit(): void {
-		console.log('------->');
-		console.log(this.cardDummy);
-
-		this._homeApiService.getHome().subscribe((response) => {
-			this.listConcerts = response.getDataCardEvent();
-			this.listGenres = response.genres;
-		});
+		this._loadHome();
 	}
 
 	ngAfterViewInit(): void {
@@ -50,6 +47,13 @@ export class HomePageComponent implements OnInit, AfterViewInit {
 	}
 
 	clickCard(event: ICardEvent): void {
-		console.log('----clickCard-------', event);
+		this._router.navigate([PATH_BUY_PAGES.buyPage.withSlash], { state: { event } });
+	}
+
+	private _loadHome() {
+		this._homeApiService.getHome().subscribe((response) => {
+			this.listGenres = response.genres;
+			this.listConcerts = response.getDataCardEvent();
+		});
 	}
 }
