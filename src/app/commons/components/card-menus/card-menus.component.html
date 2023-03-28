@@ -4,7 +4,6 @@
 		*ngFor="let menu of menus"
 		[ngClass]="{ 'container__card--active': menu.active }"
 		[routerLink]="menu.path"
-		(click)="clickMenu(menu)"
 	>
 		<img src="{{ 'assets/images/card-menus/' + menu.nameImage }} " />
 		<span>{{ menu.title }} </span>

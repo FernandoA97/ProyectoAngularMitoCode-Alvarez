@@ -1,8 +1,9 @@
-import { AfterViewInit, Component, inject, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { CardEventComponent } from '../../commons/components/card-event/card-event.component';
 import { PATH_BUY_PAGES } from '../../commons/config/path-pages';
 import { ICardEvent } from '../../commons/models/components.interface';
+import { DemoCorsService } from '../../commons/services/api/demo-cors/demo-cors.service';
 import { IHomeGenres } from '../../commons/services/api/home/home-api.interface';
 import { HomeApiService } from '../../commons/services/api/home/home-api.service';
 import { SharedFormCompleteModule } from '../../commons/shared/shared-form-complete.module';
@@ -14,11 +15,12 @@ import { SharedFormCompleteModule } from '../../commons/shared/shared-form-compl
 	styleUrls: ['./home-page.component.scss'],
 	imports: [SharedFormCompleteModule, CardEventComponent]
 })
-export class HomePageComponent implements OnInit, AfterViewInit {
+export class HomePageComponent implements OnInit {
 	@ViewChild('cardDummy') cardDummy?: CardEventComponent;
 
 	private _homeApiService = inject(HomeApiService);
 	private _router = inject(Router);
+	private _demoCorsService = inject(DemoCorsService);
 
 	listConcerts: ICardEvent[] = [];
 	listGenres: IHomeGenres[] = [];
@@ -37,13 +39,8 @@ export class HomePageComponent implements OnInit, AfterViewInit {
 
 	ngOnInit(): void {
 		this._loadHome();
-	}
 
-	ngAfterViewInit(): void {
-		console.log('---ngAfterViewInit---->');
-		// setTimeout(() => {
-		// 	this.cardDummy!.event = this.cardEventDummy;
-		// }, 0);
+		this._demoCorsService.getGreeting().subscribe();
 	}
 
 	clickCard(event: ICardEvent): void {

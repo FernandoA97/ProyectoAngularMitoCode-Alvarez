@@ -46,8 +46,15 @@
 						"tsConfig": "tsconfig.app.json",
 						"inlineStyleLanguage": "scss",
 						"assets": ["src/favicon.ico", "src/assets"],
-						"styles": ["src/styles.scss"],
-						"scripts": []
+						"styles": ["src/styles.scss", "node_modules/@costlydeveloper/ngx-awesome-popup/styles/theme.css"],
+						"scripts": [],
+						"allowedCommonJsDependencies": [
+							"exceljs",
+							"pdfmake/build/pdfmake",
+							"clone-deep",
+							"file-saver",
+							"pdfmake/build/vfs_fonts"
+						]
 					},
 					"configurations": {
 						"production": {
@@ -55,7 +62,7 @@
 								{
 									"type": "initial",
 									"maximumWarning": "500kb",
-									"maximumError": "1mb"
+									"maximumError": "10mb"
 								},
 								{
 									"type": "anyComponentStyle",
@@ -92,6 +99,7 @@
 				},
 				"serve": {
 					"builder": "@angular-devkit/build-angular:dev-server",
+					"options": { "proxyConfig": "proxy.conf.json" },
 					"configurations": {
 						"production": {
 							"browserTarget": "music-store:build:production"

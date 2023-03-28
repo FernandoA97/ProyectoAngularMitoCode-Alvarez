@@ -7,7 +7,7 @@ export class DemoCorsService {
 	constructor(private http: HttpClient) {}
 
 	getGreeting(): Observable<unknown> {
-		// return this.http.get<unknown>('http://localhost:8080/apidemo/greeting');
-		return this.http.get<unknown>('apidemo/greeting');
+		// return this.http.get<unknown>('http://localhost:8080/api/greeting');
+		return this.http.get<unknown>('api/greeting');
 	}
 }

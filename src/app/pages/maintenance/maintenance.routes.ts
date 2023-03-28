@@ -1,10 +1,13 @@
 import { Routes } from '@angular/router';
 import { PATH_MAINTENANCE_PAGES } from '../../commons/config/path-pages';
+import { AUTH_GUARD, MAINTENANCE_GUARD } from '../../commons/guards/function.guard';
 import { MaintenanceComponent } from './maintenance.component';
 
 export const routes: Routes = [
 	{
 		path: '', //www.mitocode.com/maintenance
+		canActivate: [MAINTENANCE_GUARD],
+		canActivateChild: [AUTH_GUARD],
 		component: MaintenanceComponent,
 		children: [
 			{

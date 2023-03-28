@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -14,6 +14,7 @@ import { MatSelectModule } from '@angular/material/select';
 	exports: [
 		CommonModule,
 		ReactiveFormsModule,
+		FormsModule,
 		MatFormFieldModule,
 		MatInputModule,
 		MatDatepickerModule,

@@ -18,7 +18,7 @@
 		</div>
 
 		<div>
-			<button mat-raised-button color="primary">CONSULTAR</button>
+			<button mat-raised-button color="primary" (click)="clickQuery()">CONSULTAR</button>
 			<button mat-raised-button color="accent" style="margin-left: 10px" (click)="clickClear()">LIMPIAR</button>
 		</div>
 
@@ -26,22 +26,22 @@
 			<table mat-table [dataSource]="dataSource">
 				<ng-container matColumnDef="customer">
 					<th mat-header-cell *matHeaderCellDef>CLIENTE</th>
-					<td mat-cell *matCellDef="let element">{{ element.customerName }}</td>
+					<td mat-cell *matCellDef="let element">{{ element.fullName }}</td>
 				</ng-container>
 
 				<ng-container matColumnDef="event">
 					<th mat-header-cell *matHeaderCellDef>EVENTO</th>
-					<td mat-cell *matCellDef="let element">{{ element.concertName }}</td>
+					<td mat-cell *matCellDef="let element">{{ element.title }}</td>
 				</ng-container>
 
 				<ng-container matColumnDef="ticketsQuantity">
 					<th mat-header-cell *matHeaderCellDef>NRO. ENTRADAS</th>
-					<td mat-cell *matCellDef="let element">{{ element.ticketsQuantity }}</td>
+					<td mat-cell *matCellDef="let element">{{ element.quantity }}</td>
 				</ng-container>
 
 				<ng-container matColumnDef="totalSale">
 					<th mat-header-cell *matHeaderCellDef>PAGO</th>
-					<td mat-cell *matCellDef="let element">{{ element.totalPrice }}</td>
+					<td mat-cell *matCellDef="let element">{{ element.total }}</td>
 				</ng-container>
 
 				<ng-container matColumnDef="saleDate">
@@ -51,7 +51,7 @@
 
 				<ng-container matColumnDef="dateEvent">
 					<th mat-header-cell *matHeaderCellDef>FECHA DE EVENTO</th>
-					<td mat-cell *matCellDef="let element">{{ element.concertDate }}</td>
+					<td mat-cell *matCellDef="let element">{{ element.dateEvent }}</td>
 				</ng-container>
 
 				<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -3,12 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from './../../../../../environments/environment';
 import { IResponse } from './../api-models-base.interface';
-import {
-	IRequestCreateSale,
-	IRequestListSalesByGenre,
-	IResponseListSales,
-	IResponseSale
-} from './sale-api-model.interface';
+import { IRequestCreateSale, IRequestListSalesByGenre, IResponseSale } from './sale-api-model.interface';
 
 const URL_SALE = environment.host + '/Sales';
 const URL_SALE_GET = URL_SALE + '/Get';
@@ -30,19 +25,19 @@ export class SaleApiService {
 		return this._httpClient.get<IResponse<IResponseSale>>(`${URL_SALE_GET}/${idSale}`);
 	}
 
-	getSalesUser(filter: string, page?: number, rows?: number): Observable<IResponse<IResponseListSales[]>> {
-		return this._httpClient.get<IResponse<IResponseListSales[]>>(URL_LIST_SALE);
+	getSalesUser(filter: string, page?: number, rows?: number): Observable<IResponse<IResponseSale[]>> {
+		return this._httpClient.get<IResponse<IResponseSale[]>>(URL_LIST_SALE);
 	}
 
-	getListSales(request: IRequestListSalesByGenre): Observable<IResponse<IResponseListSales[]>> {
-		let params = new HttpParams().set('startDate', request.dateStart).set('endDate', request.dateEnd);
+	getListSales(request: IRequestListSalesByGenre): Observable<IResponse<IResponseSale[]>> {
+		let params = new HttpParams().set('dateStart', request.dateStart).set('dateEnd', request.dateEnd);
 		if (request.page) {
 			params = params.set('page', request.page);
 		}
 		if (request.rows) {
-			params = params.set('page', request.rows);
+			params = params.set('rows', request.rows);
 		}
 
-		return this._httpClient.get<IResponse<IResponseListSales[]>>(URL_LIST_SALE_BY_DATE, { params });
+		return this._httpClient.get<IResponse<IResponseSale[]>>(URL_LIST_SALE_BY_DATE, { params });
 	}
 }

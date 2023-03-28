@@ -6,29 +6,9 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterModule } from '@angular/router';
 import { CardEventComponent } from '../../../commons/components/card-event/card-event.component';
 import { IResponseGenre } from '../../../commons/services/api/genre/genre-api-model.interface';
-import { IResponseListSales } from '../../../commons/services/api/sale/sale-api-model.interface';
+import { IResponseSale } from '../../../commons/services/api/sale/sale-api-model.interface';
 import { SaleApiService } from '../../../commons/services/api/sale/sale-api.service';
 import { SharedFormCompleteModule } from '../../../commons/shared/shared-form-complete.module';
-
-export interface PeriodicElement {
-	name: string;
-	position: number;
-	weight: number;
-	symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-	{ position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-	{ position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-	{ position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-	{ position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-	{ position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-	{ position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-	{ position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-	{ position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-	{ position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-	{ position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' }
-];
 
 @Component({
 	standalone: true,
@@ -41,22 +21,20 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export default class MaintenanceBuyPageComponent implements OnInit, AfterViewInit {
 	@ViewChild('paginator') paginator?: MatPaginator;
 
-	displayedColumns: string[] = [
-		'customer',
-		'event',
-		'ticketsQuantity',
-		'totalSale',
-		'saleDate',
-		'saleDate',
-		'dateEvent'
-	];
+	displayedColumns: string[] = ['customer', 'event', 'ticketsQuantity', 'totalSale', 'saleDate', 'dateEvent'];
 
 	private _saleApiService = inject(SaleApiService);
 	private _formBuilder = inject(FormBuilder);
 	private _datePipe = inject(DatePipe);
 
+	// constructor(
+	// 	private _saleApiService: SaleApiService,
+	// 	private _formBuilder: FormBuilder,
+	// 	private _datePipe: DatePipe
+	// ) {}
+
 	listGenres: IResponseGenre[] = [];
-	dataSource = new MatTableDataSource<IResponseListSales>();
+	dataSource = new MatTableDataSource<IResponseSale>();
 
 	formGroup = this._formBuilder.group({
 		genre: [0, Validators.required],
