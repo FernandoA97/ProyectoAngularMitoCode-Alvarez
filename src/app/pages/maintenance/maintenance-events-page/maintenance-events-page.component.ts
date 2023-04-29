@@ -185,7 +185,7 @@ export default class MaintenanceEventsPageComponent implements OnInit, AfterView
 	private _loadGenres(): void {
 		this._genreApiService.getGenres().subscribe((response) => {
 			if (response && response.data) {
-				this.listGenres = response.data;
+				this.listGenres = response.data.filter((a) => a.status == true);
 			}
 		});
 	}

@@ -110,8 +110,7 @@ export class MaintenanceEventsPageService {
 						this._toastEvokeService.success('Exito', 'La información ha sido guardada.');
 						return this._succes(true);
 					}
-
-					return this._succes(false);
+					return this._succes(true);
 				})
 			);
 	}
@@ -133,7 +132,7 @@ export class MaintenanceEventsPageService {
 			place: this.placeField.value
 		};
 
-		const existHttpMitocode = this.imageField.value.search('https://mitocode.blob.core.windows.net');
+		const existHttpMitocode = this.imageField.value.search('https://localhost:8000');
 
 		if (method === CRUD_METHOD.SAVE || (method == CRUD_METHOD.UPDATE && existHttpMitocode === -1)) {
 			const base64 = this.imageField.value.split(',')[1];
@@ -146,7 +145,7 @@ export class MaintenanceEventsPageService {
 
 	private _getMethod(method: CRUD_METHOD, request: IRequestCreateUpdateConcert): Observable<IResponse<number>> {
 		const idEvent = this.idField.value as number;
-
+		console.log(idEvent);
 		return method === CRUD_METHOD.SAVE
 			? this._eventApiService.createConcert(request)
 			: this._eventApiService.updateConcert(idEvent, request);

@@ -17,7 +17,7 @@ export const routes: Routes = [
 			},
 			{
 				path: PATH_MAINTENANCE_PAGES.events.onlyPath,
-				title: 'Eventos',
+				title: 'Eventos2',
 				loadComponent: () => import('./maintenance-events-page/maintenance-events-page.component')
 			},
 			{
@@ -26,9 +26,14 @@ export const routes: Routes = [
 				loadComponent: () => import('./maintenance-reports/maintenance-reports.component')
 			},
 			{
+				path: PATH_MAINTENANCE_PAGES.genres.onlyPath,
+				title: 'Generos',
+				loadComponent: () => import('./maintenance-genre-page/maintenance-genre-page.component')
+			},
+			{
 				path: '',
 				pathMatch: 'full',
-				redirectTo: PATH_MAINTENANCE_PAGES.events.onlyPath
+				redirectTo: PATH_MAINTENANCE_PAGES.buy.onlyPath
 			}
 		]
 	}

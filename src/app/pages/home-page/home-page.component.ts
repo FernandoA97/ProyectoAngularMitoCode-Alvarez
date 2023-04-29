@@ -49,7 +49,7 @@ export class HomePageComponent implements OnInit {
 
 	private _loadHome() {
 		this._homeApiService.getHome().subscribe((response) => {
-			this.listGenres = response.genres;
+			this.listGenres = response.genres.filter((a) => a.status == true);
 			this.listConcerts = response.getDataCardEvent();
 		});
 	}

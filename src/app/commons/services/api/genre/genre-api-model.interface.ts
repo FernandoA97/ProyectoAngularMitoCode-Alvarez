@@ -8,6 +8,7 @@ export interface IResponseGenre {
 
 //#region CREATE GENRE
 export interface IRequestCreateUpdateGenre {
+	id: number;
 	name: string;
 	status: boolean;
 }

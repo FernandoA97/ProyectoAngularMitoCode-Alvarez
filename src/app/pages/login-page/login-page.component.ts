@@ -31,8 +31,8 @@ export class LoginPageComponent {
 	// constructor(private _router: Router, private _channelHeaderService: ChannelHeaderService) {}
 
 	formGroup = this._formBuilder.nonNullable.group({
-		email: ['Orlando.erick@gmail.com', [Validators.required, Validators.email]],
-		password: ['miclavesecreta', Validators.required]
+		email: ['', [Validators.required, Validators.email]],
+		password: ['', Validators.required]
 	});
 
 	clickLogin(): void {
@@ -49,6 +49,7 @@ export class LoginPageComponent {
 			this._userApiService.login({ userName: email, password }).subscribe({
 				next: (response) => {
 					this._saveDataUserAndRedirect(response);
+					this._sessionStorageService.setItem('email', email);
 				},
 				error: () => {
 					this.disabledButton = false;
@@ -61,7 +62,7 @@ export class LoginPageComponent {
 		const dataUser: IDataUser = {
 			token: response.token,
 			fullName: response.fullName,
-			isAdmin: response.roles[0] === 'Administrador'
+			isAdmin: response.roles[0] === 'Admin'
 		};
 
 		this._sessionStorageService.setItem(KEYS_WEB_STORAGE.DATA_USER, dataUser);

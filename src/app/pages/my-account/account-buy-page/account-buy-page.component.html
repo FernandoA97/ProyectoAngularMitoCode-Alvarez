@@ -1,1 +1,51 @@
-<p>account-buy-page works!</p>
+<div>
+	<h2>Mis Compras</h2>
+
+	<div class="content">
+		<mat-tab-group mat-align-tabs="center" backgroundColor="primary">
+			<mat-tab>
+				<div class="list flex-column" style="padding: 20px">
+					<mat-form-field appearance="outline">
+						<mat-label>Buscar</mat-label>
+						<input matInput (keyup)="applyFilter($event)" #input />
+					</mat-form-field>
+					<div class="mat-elevation-z8">
+						<table #table mat-table [dataSource]="dataSource">
+							<ng-container matColumnDef="ntransacction">
+								<th mat-header-cell *matHeaderCellDef>Numero de Transaccion</th>
+								<td mat-cell *matCellDef="let element">{{ element.operationNumber }}</td>
+							</ng-container>
+
+							<ng-container matColumnDef="nameEvent">
+								<th mat-header-cell *matHeaderCellDef>Evento</th>
+								<td mat-cell *matCellDef="let element">{{ element.title }}</td>
+							</ng-container>
+							<ng-container matColumnDef="numTikets">
+								<th mat-header-cell *matHeaderCellDef>Nro Entradas</th>
+								<td mat-cell *matCellDef="let element">{{ element.quantity }}</td>
+							</ng-container>
+							<ng-container matColumnDef="saleTot">
+								<th mat-header-cell *matHeaderCellDef>Pago</th>
+								<td mat-cell *matCellDef="let element">{{ element.total }}</td>
+							</ng-container>
+							<ng-container matColumnDef="dateSales">
+								<th mat-header-cell *matHeaderCellDef>Fecha de Compra</th>
+								<td mat-cell *matCellDef="let element">{{ element.saleDate }}</td>
+							</ng-container>
+							<ng-container matColumnDef="dateEvent">
+								<th mat-header-cell *matHeaderCellDef>Fecha de evento</th>
+								<td mat-cell *matCellDef="let element">{{ element.dateEvent }}</td>
+							</ng-container>
+							<ng-container matColumnDef="tickets">
+								<th mat-header-cell *matHeaderCellDef>Ticket</th>
+								<td mat-cell *matCellDef="let element"><img src="assets/images/card-menus/buys.png" width="50px" /></td>
+							</ng-container>
+							<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+							<tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+						</table>
+					</div>
+				</div>
+			</mat-tab>
+		</mat-tab-group>
+	</div>
+</div>

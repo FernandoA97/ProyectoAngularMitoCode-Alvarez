@@ -11,6 +11,7 @@ import { SessionStorageService } from './../../../../services/local/storage/stor
 	styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+	static ngOnInit: any;
 	constructor(
 		private _channelService: ChannelHeaderService,
 		private _sessionStorageService: SessionStorageService,
@@ -22,7 +23,7 @@ export class HeaderComponent implements OnInit {
 	readonly registerPath = PATHS_AUTH_PAGES.registerPage.withSlash;
 	myAccountPath = PATH_MY_ACCOUNT_PAGES.withSlash;
 
-	showUser = false;
+	public showUser = false;
 
 	userName?: string;
 	isAdmin?: boolean;

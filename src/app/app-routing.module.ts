@@ -50,7 +50,7 @@ export const routes: Routes = [
 	},
 	{
 		path: PATH_MY_ACCOUNT_PAGES.onlyPath,
-		loadComponent: () => import('./pages/my-account/my-account.component')
+		loadChildren: () => import('./pages/my-account/my-account.routes').then((m) => m.routes)
 	},
 	{
 		title: '404 | no se encuentra la página',

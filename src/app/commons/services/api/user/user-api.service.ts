@@ -47,6 +47,11 @@ export class UserApiService {
 	}
 
 	changePassword(request: IRequestChangePassword): Observable<IResponse> {
-		return this._httpClient.post<IResponse>(URL_CHANGE_PASSWORD, request);
+		return this._httpClient.post<IResponse>(URL_CHANGE_PASSWORD, request).pipe(
+			catchError((error) => {
+				console.log('ERROR DESDE EL MISMO SERVICIO::::', error);
+				throw error;
+			})
+		);
 	}
 }
